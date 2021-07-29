@@ -1,13 +1,13 @@
-package com.allstate.tacoman.tacoinsurance;
+package com.allstate.tacoman.customerinsurance;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TacoInsuranceApplication {
+public class CustomerInsuranceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TacoInsuranceApplication.class, args);
+		SpringApplication.run(CustomerInsuranceApplication.class, args);
 	}
 
 }
