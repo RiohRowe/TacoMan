@@ -14,7 +14,7 @@ public class SwaggerConfig {
 
     @Bean
     public Docket postsApi() {
-        return new Docket(DocumentationType.SWAGGER_2).groupName("taco-insurance-api")
-                .select().paths(regex("/api/allstate.*")).build();
+        return new Docket(DocumentationType.SWAGGER_2).groupName("customer-insurance-api");
+//                .select().paths(regex("/api/allstate.*")).build();
     }
 }

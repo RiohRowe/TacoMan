@@ -20,6 +20,11 @@ public class PolicyController {
         return policyService.getAllPolicies();
     }
 
+    @GetMapping("/policy/alll")
+    public List<Policy> getAllPoliciesByCustomerId(@RequestParam Long customerId) {
+        return policyService.getAllByCustomerId(customerId);
+    }
+
     @PostMapping("/policy/quote")
     public PolicyQuoteResponseDTO generateQuote(@RequestBody PolicyRequestDTO policyData) {
         return policyService.createQuote(policyData);

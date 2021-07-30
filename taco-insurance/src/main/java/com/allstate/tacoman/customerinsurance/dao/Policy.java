@@ -13,7 +13,7 @@ public class Policy {
     private CoverageType coverageType;
     private Date processDate;
     private Date effectiveDate;
-    private Double deductible;
+    private DeductibleType deductibleType;
     private Double premium;
     @ManyToOne
     @JoinColumn(name = "customerId")
@@ -67,12 +67,12 @@ public class Policy {
         this.effectiveDate = effectiveDate;
     }
 
-    public Double getDeductible() {
-        return deductible;
+    public DeductibleType getDeductible() {
+        return deductibleType;
     }
 
-    public void setDeductible(Double deductible) {
-        this.deductible = deductible;
+    public void setDeductible(DeductibleType deductibleType) {
+        this.deductibleType = deductibleType;
     }
 
     public Double getPremium() {

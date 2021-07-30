@@ -1,11 +1,9 @@
 package com.allstate.tacoman.customerinsurance.dao;
 
 public enum PolicyType {
-    DIRT(100.00),
-    BASIC(200.00),
-    STANDARD(300.00),
-    ENHANCED(400.00),
-    PREMIUM(500.00);
+    AUTO (110.00),
+    HOME (80.00),
+    LIFE (20.00);
 
     private final Double baseRate;
 
@@ -13,11 +11,8 @@ public enum PolicyType {
         this.baseRate = baseRate;
     }
 
-    public Double getBasePremium() {
+    public Double getBaseRate() {
         return baseRate;
     }
 
-    public Double getBaseDeductible() {
-        return 1100 - (2 * baseRate);
-    }
 }

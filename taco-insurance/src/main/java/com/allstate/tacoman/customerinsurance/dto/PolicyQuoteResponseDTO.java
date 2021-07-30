@@ -10,7 +10,7 @@ public class PolicyQuoteResponseDTO {
 
     public PolicyQuoteResponseDTO(Policy policy) {
         this.premium = policy.getPremium();
-        this.deductible = policy.getDeductible();
+        this.deductible = policy.getDeductible().getDeductible();
         this.policyType = policy.getPolicyType().toString();
         this.coverageType = policy.getCoverageType().toString();
     }

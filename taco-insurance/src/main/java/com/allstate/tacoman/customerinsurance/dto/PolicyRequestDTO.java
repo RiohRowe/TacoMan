@@ -4,7 +4,7 @@ public class PolicyRequestDTO {
     private Long customerId;
     private String policyType;
     private String coverageType;
-    private Double deductible;
+    private String deductible;
 
     public Long getCustomerId() {
         return customerId;
@@ -30,11 +30,11 @@ public class PolicyRequestDTO {
         this.coverageType = coverageType;
     }
 
-    public Double getDeductible() {
+    public String getDeductible() {
         return deductible;
     }
 
-    public void setDeductible(Double deductible) {
+    public void setDeductible(String deductible) {
         this.deductible = deductible;
     }
 }

@@ -1,9 +1,9 @@
 package com.allstate.tacoman.customerinsurance.dao;
 
 public enum CoverageType {
-    AUTO(.83),
-    HOME(1.02),
-    LIFE(1.36);
+    ECONOMY(.6),
+    STANDARD(1.0),
+    PREMIUM(1.5);
 
     private final Double multiplier;
 
