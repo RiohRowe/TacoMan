@@ -1,6 +1,6 @@
 package com.allstate.tacoman.customerinsurance.dto;
 
-import java.io.Serializable;
+import com.allstate.tacoman.customerinsurance.dao.Policy;
 
 public class PolicyQuoteResponseDTO {
     private Double premium;
@@ -8,11 +8,11 @@ public class PolicyQuoteResponseDTO {
     private String policyType;
     private String coverageType;
 
-    public PolicyQuoteResponseDTO(Double premium, Double deductible, String policyType, String coverageType) {
-        this.premium = premium;
-        this.deductible = deductible;
-        this.policyType = policyType;
-        this.coverageType = coverageType;
+    public PolicyQuoteResponseDTO(Policy policy) {
+        this.premium = policy.getPremium();
+        this.deductible = policy.getDeductible();
+        this.policyType = policy.getPolicyType().toString();
+        this.coverageType = policy.getCoverageType().toString();
     }
 
     public Double getPremium() {

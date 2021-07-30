@@ -2,7 +2,6 @@ package com.allstate.tacoman.customerinsurance.dao;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 public class Policy {
@@ -10,14 +9,14 @@ public class Policy {
     @GeneratedValue
     private Long id;
     private String policyNumber;
-    private String policyType;
-    private String coverageType;
+    private PolicyType policyType;
+    private CoverageType coverageType;
     private Date processDate;
     private Date effectiveDate;
     private Double deductible;
     private Double premium;
     @ManyToOne
-    @JoinColumn(name="customerId")
+    @JoinColumn(name = "customerId")
     private Customer customer;
 
     public Long getId() {
@@ -36,19 +35,19 @@ public class Policy {
         this.policyNumber = policyNumber;
     }
 
-    public String getPolicyType() {
+    public PolicyType getPolicyType() {
         return policyType;
     }
 
-    public void setPolicyType(String policyType) {
+    public void setPolicyType(PolicyType policyType) {
         this.policyType = policyType;
     }
 
-    public String getCoverageType() {
+    public CoverageType getCoverageType() {
         return coverageType;
     }
 
-    public void setCoverageType(String coverageType) {
+    public void setCoverageType(CoverageType coverageType) {
         this.coverageType = coverageType;
     }
 

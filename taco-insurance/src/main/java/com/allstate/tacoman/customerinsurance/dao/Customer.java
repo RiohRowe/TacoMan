@@ -1,7 +1,9 @@
-
 package com.allstate.tacoman.customerinsurance.dao;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.List;
 
 @Entity
@@ -20,13 +22,12 @@ public class Customer {
     private List<Policy> policies;
 
 
-
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
-        this.id =Customer.this.id;
+        this.id = Customer.this.id;
     }
 
     public String getName() {

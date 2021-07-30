@@ -2,23 +2,21 @@ package com.allstate.tacoman.customerinsurance.controller;
 
 import com.allstate.tacoman.customerinsurance.dao.Customer;
 import com.allstate.tacoman.customerinsurance.service.CustomerService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.management.InstanceNotFoundException;
 import java.util.List;
 
 @RestController
 public class CustomerController {
 
-    private CustomerService customerService;
+    private final CustomerService customerService;
 
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
     }
 
     @GetMapping("/customer/{id}")
-    public Customer getCustomer(@PathVariable Long id){
+    public Customer getCustomer(@PathVariable Long id) {
         return customerService.getById(id);
     }
 

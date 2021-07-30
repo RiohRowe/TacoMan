@@ -15,14 +15,14 @@ public class PolicyController {
     @Autowired
     private PolicyService policyService;
 
+    @GetMapping("/policy/all")
+    public List<Policy> getAllPolicies() {
+        return policyService.getAllPolicies();
+    }
+
     @PostMapping("/policy/quote")
-    public PolicyQuoteResponseDTO getPremium() {
-        PolicyQuoteResponseDTO quote = new PolicyQuoteResponseDTO(
-                100.93,
-                .01,
-                "auto",
-                "standard");
-        return quote;
+    public PolicyQuoteResponseDTO generateQuote(@RequestBody PolicyRequestDTO policyData) {
+        return policyService.createQuote(policyData);
     }
 
     @PostMapping("/policy")
@@ -30,13 +30,10 @@ public class PolicyController {
         return policyService.createPolicy(request);
     }
 
-    @PostMapping("/policy/create/many")
-    public List<Policy> createPolicys(@RequestBody List<Policy> policys) {
-        return policyService.createPolicys(policys);
+    @DeleteMapping("policy/{policyId}")
+    public void deletePolicy(@PathVariable Long policyId) {
+        policyService.deleteById(policyId);
     }
 
-    @GetMapping("/policy/getall")
-    public List<Policy> getAllPolicys() {
-        return policyService.getAllPolicys();
-    }
+
 }
