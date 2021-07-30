@@ -4,7 +4,6 @@ import com.allstate.tacoman.customerinsurance.dao.Customer;
 import com.allstate.tacoman.customerinsurance.dto.PolicyQuoteResponseDTO;
 import com.allstate.tacoman.customerinsurance.dto.PolicyRequestDTO;
 import com.allstate.tacoman.customerinsurance.exception.InvalidTypeException;
-import com.allstate.tacoman.customerinsurance.repository.CustomerRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

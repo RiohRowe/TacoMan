@@ -16,13 +16,10 @@ public class PolicyController {
     private PolicyService policyService;
 
     @GetMapping("/policy/all")
-    public List<Policy> getAllPolicies() {
-        return policyService.getAllPolicies();
-    }
-
-    @GetMapping("/policy/alll")
-    public List<Policy> getAllPoliciesByCustomerId(@RequestParam Long customerId) {
-        return policyService.getAllByCustomerId(customerId);
+    public List<Policy> getAllPoliciesByCustomerId(@RequestParam(required = false) Long customerId) {
+       return customerId != null?
+               policyService.getAllByCustomerId(customerId) :
+               policyService.getAllPolicies();
     }
 
     @PostMapping("/policy/quote")
