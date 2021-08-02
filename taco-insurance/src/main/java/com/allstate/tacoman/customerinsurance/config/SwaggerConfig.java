@@ -1,10 +1,11 @@
-package com.allstate.tacoman.tacoinsurance.config;
+package com.allstate.tacoman.customerinsurance.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 import static springfox.documentation.builders.PathSelectors.regex;
 
 @Configuration
@@ -13,7 +14,7 @@ public class SwaggerConfig {
 
     @Bean
     public Docket postsApi() {
-        return new Docket(DocumentationType.SWAGGER_2).groupName("taco-insurance-api")
-                .select().paths(regex("/api/allstate.*")).build();
+        return new Docket(DocumentationType.SWAGGER_2).groupName("customer-insurance-api");
+//                .select().paths(regex("/api/allstate.*")).build();
     }
 }
