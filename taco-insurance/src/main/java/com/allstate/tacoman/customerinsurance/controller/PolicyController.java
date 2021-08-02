@@ -20,6 +20,7 @@ public class PolicyController {
        return customerId != null?
                policyService.getAllByCustomerId(customerId) :
                policyService.getAllPolicies();
+               //Comment by Shar
     }
 
     @PostMapping("/policy/quote")
