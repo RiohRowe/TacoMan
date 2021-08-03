@@ -1,9 +1,11 @@
+import { Button } from 'react-bootstrap';
+
 const SearchBar = () => {
     return (
         <div>
             <label>Search for a customer</label>
             <input type={"text"}/>
-            <button type={"submit"}>search</button>
+            <Button type={"submit"}>search</Button>
         </div>
     );
 };

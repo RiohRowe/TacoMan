@@ -1,10 +1,12 @@
 import Customer from "./Customer";
+import {useState} from "react";
+import {Dropdown} from "react-bootstrap";
 
 const CustomerList = (props) => {
   const customer1 = {
     "name": "Sean",
     "address": "1a",
-    "zipcode": "1",
+    "zipcode": "98765",
     "age": "100",
     "yearsAsCustomer": "70",
     "creditScore": "800"
@@ -33,21 +35,49 @@ const CustomerList = (props) => {
     "yearsAsCustomer": "40",
     "creditScore": "900"
   }
-  const customers = [customer1,customer2,customer3,customer4].map((cust) => {
+  const [customers, setCustomers] = useState([customer1, customer2, customer3, customer4])
+  const zipcodes = customers.map(customer => customer.zipcode)
+      .filter((v, i, a) => a.indexOf(v) === i).map((zipcode) => {
+    return <Dropdown.Item eventKey={zipcode}>{zipcode}</Dropdown.Item>;
+  })
+  ;
+  const [selectedZipcode, setSelectedZipcode] = useState("all")
+  const customerComponents = customers.filter((cust) => {
+    return selectedZipcode==="all" || cust.zipcode===selectedZipcode
+  }).map((cust) => {
    return (<Customer customer={cust} key={cust.name}/>);
   });
 
-  console.log(customers);
-  return (<table>
-    <tr>
-      <th>name</th>
-      <th>address</th>
-      <th>zipcode</th>
-      <th>age</th>
-      <th>yearsAsCustomer</th>
-      <th>creditScore</th>
-    </tr>
-    {customers}
-  </table>);
+  console.log(selectedZipcode);
+
+  return (
+  <>
+    <Dropdown   className={"mt-5"} onSelect={setSelectedZipcode}>
+      <Dropdown.Toggle variant="success" id="dropdown-basic">
+        ViewByZipcode
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu>
+        <Dropdown.Item eventKey={"all"}>All</Dropdown.Item>
+        {zipcodes}
+      </Dropdown.Menu>
+    </Dropdown>
+    <table  className={"my-3 table"}>
+      <thead className={"thead-dark"}>
+        <tr>
+          <th>name</th>
+          <th>address</th>
+          <th>zipcode</th>
+          <th>age</th>
+          <th>yearsAsCustomer</th>
+          <th>creditScore</th>
+        </tr>
+      </thead>
+      <tbody>
+        {customerComponents}
+      </tbody>
+    </table>
+  </>
+  );
 };
 export default CustomerList;

@@ -5,7 +5,7 @@ import NavBar from "./components/UnnamedDirectory/Navbar";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App ">
         <NavBar/>
         <AdminUI/>
     </div>
