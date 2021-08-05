@@ -1,10 +1,10 @@
-import CustomerList from "./CustomerList";
-import SearchBar from "./SearchBar";
+import CustomerList from "./CustomerListTable/CustomerList";
+import FindByIdSearchBar from "../TopLevel/FindByIdSearchBar";
 
 const AdminUI = (props) => {
     return(
         <div className={"my-5 mx-5 d-flex flex-column align-items-center justify-content-center"}>
-            <SearchBar/>
+            <FindByIdSearchBar/>
             <CustomerList/>
         </div>
     );

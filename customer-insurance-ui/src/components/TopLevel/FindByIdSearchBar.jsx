@@ -1,6 +1,6 @@
 import { Button } from 'react-bootstrap';
 
-const SearchBar = () => {
+const FindByIdSearchBar = () => {
     return (
         <div>
             <label>Search for a customer</label>
@@ -10,4 +10,4 @@ const SearchBar = () => {
     );
 };
 
-export default SearchBar;
+export default FindByIdSearchBar;
