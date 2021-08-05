@@ -8,7 +8,7 @@ const CustomerList = (props) => {
   const [customers, setCustomers] = useState([])
   const zipCodes = customers.map(customer => customer.zipCode)
       .filter((v, i, a) => a.indexOf(v) === i).map((zipCode) => {
-    return <Dropdown.Item eventKey={zipCode}>{zipCode}</Dropdown.Item>;
+    return<option value={zipCode}>{zipCode}</option>;
   })
   ;
   const [selectedZipCode, setSelectedZipCode] = useState("all")
@@ -37,26 +37,18 @@ const CustomerList = (props) => {
 
   return (
   <>
+    <select className={"form-select"} aria-label={"Default select example"} style={{width:"20%"}}
+            onChange={(e) => setSelectedZipCode(e.target.value)} value={selectedZipCode} >
+      <option value={"all"}>All</option>
+      {zipCodes}
+    </select>
 
     <table  className={"my-3 table"}>
       <thead className={"thead-dark"}>
         <tr>
           <th>name</th>
           <th>address</th>
-          <th>
-            <span>
-              zip-code
-              <Dropdown onSelect={setSelectedZipCode}>
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                  {selectedZipCode}
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item eventKey={"all"}>All</Dropdown.Item>
-                  {zipCodes}
-                </Dropdown.Menu>
-              </Dropdown>
-            </span>
-          </th>
+          <th>zip-code</th>
           <th>age</th>
           <th>yearsAsCustomer</th>
           <th>creditScore</th>
