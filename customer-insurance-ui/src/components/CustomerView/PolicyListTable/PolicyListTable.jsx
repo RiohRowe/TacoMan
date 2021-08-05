@@ -2,18 +2,22 @@ import {useEffect, useState} from "react";
 import {Dropdown} from "react-bootstrap";
 import axios from 'axios';
 import Policy from "./Policy";
+import {useSelector} from "react-redux";
+import {getPolicies} from "../../../store/Selectors";
 
-const PolicyListTable = ({policies}) => {
+const PolicyListTable = () => {
 
-
+    const policies = useSelector(getPolicies);
     const policyComponents = policies.map((policy) => {
         return (<Policy policy={policy} key={policy.id}/>);
     });
 
     return (
         <>
-
-            <table  className={"my-3 table"}>
+            <div className={"d-flex justify-content-center"}>
+                <h3>User Policies</h3>
+            </div>
+            <table  className={"my-3 table"} name={"User Policies"}>
                 <thead className={"thead-dark"}>
                 <tr>
                     <th>Policy Number</th>

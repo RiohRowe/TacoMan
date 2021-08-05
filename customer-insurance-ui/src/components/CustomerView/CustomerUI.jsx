@@ -4,7 +4,7 @@ import CustomerData from "./CustomerData/CustomerData";
 import {useEffect, useState} from "react";
 import PolicyListTable from "./PolicyListTable/PolicyListTable";
 
-const CustomerUI = ({customer}) => {
+const CustomerUI = () => {
 
     const [policies, setPolicies] = useState([])
 
@@ -27,11 +27,11 @@ const CustomerUI = ({customer}) => {
     useEffect(getAllPolicies, [])
 
     return(
-        <>
-            <CustomerData customer={customer} policies={policies}/>
+        <div className={"mx-5"}>
+            <CustomerData />
+            <PolicyListTable/>
             <AddPolicyForm/>
-            <PolicyListTable policies={policies}/>
-        </>
+        </div>
     );
 }
 export default CustomerUI;

@@ -1,11 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
 import AdminUI from "./components/AdminView/AdminUI";
-import NavBar from "./components/TopLevel/Navbar";
+import NavBar from "./components/Common/Navbar";
 import LoginPage from "./components/Login/LoginPage";
 import CustomerUI from "./components/CustomerView/CustomerUI";
 import axios from 'axios';
 import {useEffect, useState} from "react";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import NotFound from "./components/404/404";
+
 function App() {
 
     const nullCustomer = {
@@ -37,10 +40,23 @@ function App() {
 
   return (
     <div className="App ">
-        <NavBar/>
-        {/*<AdminUI/>*/}
-        {/*<LoginPage/>*/}
-        <CustomerUI customer={customer}/>
+        <BrowserRouter>
+            <NavBar/>
+            <Switch>
+                <Route path={"/admin"} exact={true}>
+                    <AdminUI/>
+                </Route>
+                <Route path={"/"} exact={true}>
+                    <LoginPage/>
+                </Route>
+                <Route path={"/user"} exact={true}>
+                    <CustomerUI/>
+                </Route>
+                <Route>
+                    <NotFound/>
+                </Route>
+            </Switch>
+        </BrowserRouter>
     </div>
   );
 }
