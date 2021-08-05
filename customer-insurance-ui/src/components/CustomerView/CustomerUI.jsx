@@ -11,8 +11,6 @@ const CustomerUI = ({customer}) => {
     const getAllPolicies = () => {
         axios.get('http://localhost:8080/policy/all?customerId=24').then(
             res => {
-                console.log("res = " +res);
-                console.log(res);
                 if(res.status != 200)
                 {
                     setPolicies([])

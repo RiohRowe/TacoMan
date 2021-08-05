@@ -16,8 +16,6 @@ const CustomerList = (props) => {
   const getAllCustomers = () => {
     axios.get('http://localhost:8080/customer/all').then(
         res => {
-          console.log("res = " +res);
-          console.log(res);
           if(res.data == null)
           {
             setCustomers([])
@@ -36,8 +34,6 @@ const CustomerList = (props) => {
   }).map((cust) => {
    return (<Customer customer={cust} key={cust.name}/>);
   });
-
-  console.log(selectedZipCode);
 
   return (
   <>

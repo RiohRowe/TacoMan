@@ -1,4 +1,5 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import axios from "axios";
 
 const AddPolicyForm = () => {
 
@@ -6,9 +7,9 @@ const AddPolicyForm = () => {
     const[coverageType, setCoverageType] = useState("");
     const[deductibleType, setDeductibleType] = useState("");
 
-    const[policyTypes, setPolicyTypes] = useState(["home","auto","life"]);
-    const[coverageTypes, setCoverageTypes] = useState(["economy","standard","premium"]);
-    const[deductibleTypes, setDeductibleTypes] = useState(["low", "medium", "high"]);
+    const[policyTypes, setPolicyTypes] = useState(["home"]);
+    const[coverageTypes, setCoverageTypes] = useState(["standard"]);
+    const[deductibleTypes, setDeductibleTypes] = useState(["medium"]);
 
     const handleAddPolicy = (event) => {
         event.preventDefault();
@@ -20,6 +21,28 @@ const AddPolicyForm = () => {
         }
     }
 
+    const getPolicyTypes = () => {
+        axios.get('http://localhost:8080/policy/types/all').then(
+            res => {
+                if(res.status != 200)
+                {
+                    console.log("Failed to get Policy types.")
+                }
+                else {
+                    console.log("types = ");
+                    console.log(res.data);
+                    setPolicyTypes(res.data.policyTypes);
+                    setCoverageTypes(res.data.coverageTypes);
+                    setDeductibleTypes(res.data.deductibleTypes);
+                }
+            }
+        );
+    }
+
+    useEffect(getPolicyTypes, []);
+
+
+
     const policyTypesOptions = policyTypes.map((thisPolicyType) => {
         return<option value={thisPolicyType}>{thisPolicyType}</option>
     })
@@ -30,8 +53,12 @@ const AddPolicyForm = () => {
         return<option value={thisDeductibleType}>{thisDeductibleType}</option>
     })
 
-console.log(policyType);
-
+    const policyTypeOption = policyType == ""?
+        <option selected>Policy Type</option>: <option selected disabled>Policy Type</option>;
+    const coverageTypeOption = coverageType == ""?
+        <option selected>Coverage Type</option>: <option selected disabled>Policy Type</option>
+    const deductibleTypeOption = deductibleType == ""?
+        <option selected>Decuctible Type</option>: <option selected disabled>Policy Type</option>
     return (
         <>
             <form className="addTransactionsForm" onSubmit={handleAddPolicy}>
@@ -39,17 +66,17 @@ console.log(policyType);
                 <br/>
                 <select className="form-select" aria-label="Default select example"
                         onChange={(e) => setPolicyType(e.target.value)} value={policyType} >
-                    <option selected disabled>Policy Type</option>
+                    {policyTypeOption}
                     {policyTypesOptions}
                 </select>
                 <select className="form-select" aria-label="Default select example"
                         onChange={(e) => setCoverageType(e.target.value)} value={coverageType} >
-                    <option selected disabled>Coverage Type</option>
+                    {coverageTypeOption}
                     {coverageTypesOptions}
                 </select>
                 <select className="form-select" aria-label="Default select example"
                     onChange={(e) => setDeductibleType(e.target.value)} value={deductibleType} >
-                    <option selected disabled>Deductible Type</option>
+                    {deductibleTypeOption}
                     {deductibleTypesOptions}
                 </select>
 

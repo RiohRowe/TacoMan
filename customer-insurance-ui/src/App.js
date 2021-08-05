@@ -24,13 +24,10 @@ function App() {
             res => {
                 if(res.status != 200)
                 {
-                    setCustomer(null)
-                    console.log("RESPONCE STATUS = " +res.status)
+                    setCustomer(nullCustomer);
                 }
                 else {
                     setCustomer(res.data);
-                    console.log("RESULT IS")
-                    console.log(res);
                 }
             }
         );
